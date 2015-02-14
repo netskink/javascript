@@ -1,0 +1,27 @@
+Hello
+
+This weeks linear algebra class starts off with a fun demo. Its a javascript page for students to practice with matrix transforms.
+
+Consider it for its value as sample javascript or as a game.
+
+
+As for the game, the upper left is a matrix transform.  The goal is pick a transform matrix to move the dark blue image to the light blue image.
+
+I know this is common knowledge for John and Barn, if you are rusty as I am on how to do this here's how: (its why i'm taking the class.)
+
+1. Turn on the grid, so you can see the relationship in sizes. Adjust the scale mentally to be 2x so we don't have to use a multiplier.
+2. Mentally, place the unit basis vector for X on the grid and notice where it points.  (In the first image test it points to his left foot. ie. make a vector of [1,0]     if you use the literal scale then its [2,0]  and place it on the grid and it points to his foot.)  
+3.  Then notice where his foot is in the second picture.  (In the light blue pic its the same place.)
+4. The first (X) column of the transform matrix is the vector that results. (In this case, its the same.)  
+5. Record this as 1,0 in the upper left transform matrix for the first column.
+6. Then place the unit basis vector for Y on the grid and notice where it points. (Its about where his right hand touches the y axis.)
+7.  Then look at where his right hand moves in the light blue version of timmy, its about [1,1].
+8.  Use this to be the transform for the y column in upper left.
+
+
+This results in 
+
+1 1
+0 1
+
+Click timmy and transform him to the light blue position.
