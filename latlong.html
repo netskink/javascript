@@ -1,0 +1,115 @@
+<html>
+
+
+
+<head>
+	<script type="application/javascript">
+		// This is what the google geo coding api expects
+		// The last part of this is my exogenesis api key.
+		// This should be hidden
+		var foo = 'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=KEYISNOTHERE'
+		var theURL = 'https://maps.googleapis.com/maps/api/geocode/'
+		var theCannedAddr = 'json?address=1600+Amphitheatre+Parkway,+Mountain+View,'
+		var theAddrPrefix = 'json?address=,'
+		var theUserSpecifiedAddr;
+		// Here it is again. This should be hidden
+		var theKey = '+KEYISNOTHERE'
+
+		var tbAddrIn;
+		var tbAnsLat;
+		var tbAnsLng;
+	
+		function createDiv(responsetext) {
+			var _body = document.getElementsByTagName('body')[0];
+			var _div = document.createElement('div');
+			_div.innerHTML = responsetext;
+			_body.appendChild(_div);
+
+
+		}	
+
+		function calcLatLong() {
+			// Just hard code results in the lat box stub
+			//ansLat.value = 'set by button'
+
+			// Get the address specified by the user.
+			theUserSpecifiedAddr = tbAddrIn.value;
+
+			var cmplURLForGoogleMapAPI = theURL;
+			// The working canned Address
+			//cmplURLForGoogleMapAPI = cmplURLForGoogleMapAPI.concat(theCannedAddr);
+			cmplURLForGoogleMapAPI = cmplURLForGoogleMapAPI.concat(theAddrPrefix);
+			cmplURLForGoogleMapAPI = cmplURLForGoogleMapAPI.concat(theUserSpecifiedAddr);
+
+			cmplURLForGoogleMapAPI = cmplURLForGoogleMapAPI.concat(theKey);
+
+			xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+					
+					// Show the raw response at bottom of page
+					//createDiv(xmlhttp.responseText);
+
+					var json = JSON.parse(xmlhttp.responseText);
+					// Show the json formated response at bottom of page?
+					tbAnsLat.value = json.results[0].geometry.location.lat;
+					tbAnsLng.value = json.results[0].geometry.location.lng;
+
+					// show a result in a popup dialog
+					//alert(json.results);
+				}
+			}
+			xmlhttp.open("GET",cmplURLForGoogleMapAPI, false);
+			xmlhttp.send();
+		}
+		function init() {
+			tbAddrIn = document.getElementById('addr');
+			tbAnsLat = document.getElementById('ansLat');
+			tbAnsLng = document.getElementById('ansLng');
+			tbAnsLat.value = 'set by javascript'
+			tbAnsLng.value = 'set by javascript'
+		}
+	</script>
+
+	<style type="text/css">
+		canvas { border: 1px solid black; }
+	</style>
+
+	<title>
+		Lat Long Lookup
+	</title>
+</head>
+
+<body onload="init();">
+	<form>
+		<table>
+			<tr>
+				<td>
+					<input type="text" size="40" value="6 kandes court Durham NC 27713" id="addr" tabindex="1">
+				</td>
+				<td>
+					<button type="button" onclick="calcLatLong();">Get Lat Long</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Latitude</p>
+				</td>
+				<td>
+					<input type="textbox" size="20" value="Set by HTML" id="ansLat" tabindex="1">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Longtitude</p>
+				</td>
+				<td>
+					<input type="textbox" size="20" value="Set by HTML" id="ansLng" tabindex="1">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
+
+
