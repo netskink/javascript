@@ -1,0 +1,45 @@
+Notes on javascript-roadtrip.codeschool.com
+
+open chrome and enter url about://blank
+Select devloper tools, javascript console
+
+enter 43%10
+->3
+modulus returns remainder after division
+
+"this is a test".length
+
+"Quoth the raven:\n\t\"Nevermore!\"|
+-> Quoth the rave:
+	"Nevermore!"
+
+var myage = 47
+
+
+var welccome = "welcome" +"\n"
+
+welcome.length
+->9
+
+longword1.length > longword2.length
+
+index in strings start at zero like C.
+
+sentence.charAt(11)
+returns the character at position 11.
+
+var numPassengers = 0
+numPassengers +=3
+
+
+var numPassengers = 0
+numPassengers += 3
+var trainCapacity = 60
+// decrement one passenger
+numPassengers--
+trainCapacity -= numPassengers
+var occupancy = numPassengers + " passengers present, with " + trainCapacity + " seats remaining."
+
+
+twenty20 = "May the odds be ever in your favor.".charAt(17) + "Won't you be my neighbor?".charAt(18) + "As you wish.".charAt(9) + "Judge me by my size, do you?".charAt(17) + "Wingardium Leviosa!".charAt(15) + "To infinity...and beyond!".charAt(7)
+
